@@ -4,6 +4,7 @@ import Dashboard from './Pages/Dashboard/Dashboard';
 import Login from './Pages/Login/Login'; 
 import Signup from './Pages/Signup/Signup';
 import NotFound from './Pages/NotFound/NotFound'; 
+import Home from './Pages/Home';
 
 const authGuard = (Component) => () => {
     return JSON.parse(localStorage.getItem("data")).access_token ? (
@@ -28,6 +29,9 @@ const Routes = (props) => {
                 </Route>
                 <Route exact path="/">
                     <Redirect to='/dashboard' />
+                </Route>
+                <Route path='/home'>
+                    <Home />
                 </Route>
                 <Route path='*'> 
                     <NotFound />

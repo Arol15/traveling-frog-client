@@ -59,7 +59,7 @@ const Dashboard = () => {
               </a>
             </li>
             <li className="nav-item">
-              <a
+              <a href='/'
                 className="nav-link cursor-pointer"
                 onClick={() => logout()}
               >
@@ -73,7 +73,6 @@ const Dashboard = () => {
       <div className="px-3">
         {/* <h1>{dashboard?.user?.last_name}</h1>
         <p>{dashboard?.content}</p> */}
-        <Collections />
       </div>
     </>
   );

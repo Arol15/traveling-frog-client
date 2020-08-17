@@ -1,24 +1,21 @@
 import React from 'react';
-import config from "../../config";
 
-const CollectionCard = () => {
 
-    fetch(`${config.baseUrl}/collections`, {
-        // method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
-        .then((res) => res.json())
-        .then((data) => {
-      //   .then((data) => {
-            console.log(data)
-        })
+const CollectionCard = ({collection: {type}, collection: {id}}) => {
 
     return (
-        <div> 
-            Hello from Collection card
+        <div className='card-container'> 
+            <div>
+                Here is a background image
+            </div>
+            <div>
+                {type} 
+            </div>
+            <div>
+                {id}
+            </div>
+
+
         </div>
     )
 }
