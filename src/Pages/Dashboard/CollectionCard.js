@@ -9,9 +9,10 @@ const CollectionCard = ({collection: {type}, collection: {id}}) => {
     //     console.log(e.target.value)
 
     // }
+    // console.log(props)
     let history = useHistory()
     const redirectToPlaces = () => {
-        history.push('/types')
+        history.push(`/types/${id}`, {id})
       }
 
     return (

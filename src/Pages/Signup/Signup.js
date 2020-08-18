@@ -51,7 +51,7 @@ const Signup = () => {
           localStorage.setItem("data", JSON.stringify(data));
 
           console.log(data)
-          history.push("/dashboard");
+          history.push("/home");
         }, 2000);
 
       !error && e.target.reset();

@@ -1,25 +1,38 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useLocation } from 'react-router-dom'
+import config from '../../config'
+import ListCard from './ListCard'
+import './List.css'
 
 const List = () => {
-    
+  
+    const locations = useLocation();
+    const typeid = locations.state.id; 
+    const [pointsofinterest, setPointsofinterest] = useState([])
+
+    const getPointsofinterest = async () => {
+        const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
+        const data = await res.json();
+        console.log(data)
+        return data
+    }
+    // getPointsofinterest()
     useEffect(() => {
-        const email = JSON.parse(localStorage.getItem("data")).user.email
-        fetch(`${config.baseUrl}/users/${email}`, {
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-            "auth-token": JSON.parse(localStorage.getItem("data")).access_token
-          },
-        })
-          .then((res) => res.json())
-          .then(({ error, data }) => {
-            // console.log(data)
-            setDashboard(data);
-          });
-      }, []);
+        (async () => {
+            const data = await getPointsofinterest()
+            console.log(data)
+            setPointsofinterest(data.pointsofinterest)
+        })();
+    }, [])
+
+    console.log(pointsofinterest)
 
     return (
-        <div>Hello from list container</div>
+        <div className="list-container">
+            {pointsofinterest.map((point) => (
+                <ListCard key={point.id} point={point}/>
+            ))}
+        </div>
     )
 }
 
