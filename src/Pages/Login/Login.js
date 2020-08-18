@@ -34,7 +34,7 @@ const Login = () => {
           type: error ? "alert-danger" : "alert-success",
         });
 
-        // !error &&
+        !error &&
           setTimeout(() => {
               console.log(data)
             localStorage.setItem("data", JSON.stringify(data));

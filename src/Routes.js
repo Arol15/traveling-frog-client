@@ -5,6 +5,7 @@ import Login from './Pages/Login/Login';
 import Signup from './Pages/Signup/Signup';
 import NotFound from './Pages/NotFound/NotFound'; 
 import Home from './Pages/Home';
+import DetailsView from './Pages/DetailsView/DetailsVIew'
 
 const authGuard = (Component) => () => {
     return JSON.parse(localStorage.getItem("data")).access_token ? (
@@ -27,11 +28,10 @@ const Routes = (props) => {
                 </Route>
                 <Route path="/dashboard" render={authGuard(Dashboard)}>
                 </Route>
-                <Route exact path="/">
-                    <Redirect to='/dashboard' />
+                <Route exact path="/" render={authGuard(Home)}>
                 </Route>
-                <Route path='/home'>
-                    <Home />
+                <Route path='/types'>
+                    <DetailsView />
                 </Route>
                 <Route path='*'> 
                     <NotFound />

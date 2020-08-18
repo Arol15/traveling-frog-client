@@ -29,7 +29,7 @@ const Dashboard = () => {
     })
       .then((res) => res.json())
       .then(({ error, data }) => {
-        console.log(data)
+        // console.log(data)
         setDashboard(data);
       });
   }, []);
