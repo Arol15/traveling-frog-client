@@ -16,6 +16,7 @@ function Map() {
   const locations = useLocation();
   const typeid = locations.state.id;
   const [pointsofinterest, setPointsofinterest] = useState([]);
+  const [showPopup, setShowPop] = useState({});
 
   const getPointsofinterest = async () => {
     const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
@@ -42,25 +43,27 @@ function Map() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
         {pointsofinterest.map((point) => (
-          <Marker
-            key={point.id}
-            latitude={point.lat}
-            longitude={point.lng}
-            offsetLeft={-12}
-            offsetTop={-24}
-
-          >
-              <div>
-                  <img 
-                  className='marker' 
+          <>
+            <Marker key={point.id} latitude={point.lat} longitude={point.lng}>
+              <div
+                onClick={() =>
+                  setShowPop({
+                    ...showPopup,
+                    [point.id]: true,
+                  })
+                }
+              >
+                <img
+                  className="marker"
                   style={{
-                      height: `${6 * viewport.zoom}px`, 
-                      width: `${6 * viewport.zoom}px`
+                    height: `${6 * viewport.zoom}px`,
+                    width: `${6 * viewport.zoom}px`,
                   }}
-                  src="https://i.imgur.com/y0G5YTX.png" 
-                  alt='marker' />
+                  src="https://i.imgur.com/y0G5YTX.png"
+                  alt="marker"
+                />
               </div>
-            {/* <svg className='marker'
+              {/* <svg className='marker'
             style={{
                 width: "24px", 
                 height: "24px"
@@ -74,7 +77,22 @@ function Map() {
               <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
               <circle cx="12" cy="10" r="3"></circle>
             </svg> */}
-          </Marker>
+            </Marker>
+            {showPopup[point.id] ? (
+              <Popup
+                latitude={point.lat}
+                longitude={point.lng}
+                closeButton={true}
+                closeOnClick={false}
+                onClose={() => this.setState({ showPopup: false })}
+                anchor="top"
+              >
+                <div>
+                  <h3>{point.title}</h3>
+                </div>
+              </Popup>
+            ) : null}
+          </>
         ))}
       </ReactMapGL>
     </div>
