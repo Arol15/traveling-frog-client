@@ -1,3 +1,10 @@
 .map-container {
     width: 80%; 
 }
+
+.marker {
+    /* height: 24px; 
+    width: 24px;  */
+    transform: translate(-50%, -100%);
+
+}

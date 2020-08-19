@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import config from "../../config";
-import ReactMapGL, { Marker } from "react-map-gl";
+import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import "./Map.css";
 
 function Map() {
@@ -31,7 +31,7 @@ function Map() {
       setPointsofinterest(data.pointsofinterest);
     })();
   }, []);
-  console.log(pointsofinterest)
+  console.log(pointsofinterest);
 
   return (
     <div className="map-container">
@@ -41,18 +41,42 @@ function Map() {
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
-        {
-            pointsofinterest.map((point) => (
-                <Marker key={point.id}
-                    latitude={point.lat}
-                    longitude={point.lng}
-                    offsetLeft={-20}
-                    offsetTop={-10}
-                >
-                    <div>{point.title}</div>
-                </Marker>
+        {pointsofinterest.map((point) => (
+          <Marker
+            key={point.id}
+            latitude={point.lat}
+            longitude={point.lng}
+            offsetLeft={-12}
+            offsetTop={-24}
+
+          >
+              <div>
+                  <img 
+                  className='marker' 
+                  style={{
+                      height: `${6 * viewport.zoom}px`, 
+                      width: `${6 * viewport.zoom}px`
+                  }}
+                  src="https://i.imgur.com/y0G5YTX.png" 
+                  alt='marker' />
+              </div>
+            {/* <svg className='marker'
+            style={{
+                width: "24px", 
+                height: "24px"
+            }}
+              viewBox="0 0 24 24"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg> */}
+          </Marker>
         ))}
-        </ReactMapGL>
+      </ReactMapGL>
     </div>
   );
 }
