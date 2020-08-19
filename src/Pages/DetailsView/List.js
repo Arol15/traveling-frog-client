@@ -13,19 +13,19 @@ const List = () => {
     const getPointsofinterest = async () => {
         const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
         const data = await res.json();
-        console.log(data)
+        // console.log(data)
         return data
     }
     // getPointsofinterest()
     useEffect(() => {
         (async () => {
             const data = await getPointsofinterest()
-            console.log(data)
+            // console.log(data)
             setPointsofinterest(data.pointsofinterest)
         })();
     }, [])
 
-    console.log(pointsofinterest)
+    // console.log(pointsofinterest)
 
     return (
         <div className="list-container">
