@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import config from "../../config";
-import Collections from "./Collections";
+// import './Dashboard.css'
 
 const Dashboard = () => {
   const [dashboard, setDashboard] = useState(null);
@@ -35,7 +35,7 @@ const Dashboard = () => {
   }, []);
 // debugger
   return (
-    <>
+    <div className="dashboard-container">
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
         <a className="navbar-brand" href="/">
           Traveling Frog
@@ -74,7 +74,7 @@ const Dashboard = () => {
         {/* <h1>{dashboard?.user?.last_name}</h1>
         <p>{dashboard?.content}</p> */}
       </div>
-    </>
+    </div>
   );
 };
 

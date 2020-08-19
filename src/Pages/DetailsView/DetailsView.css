@@ -1,3 +1,7 @@
+.details-container {
+    height: 100%; 
+}
+
 .details-body {
-    display: flex; 
+    display: flex;  
 }

@@ -4,17 +4,18 @@ import './Map.css'
 
 function Map() {
   const [viewport, setViewport] = useState({
-    width: 400,
-    height: 400,
-    latitude: 37.7577,
-    longitude: -122.4376,
-    zoom: 8,
+    width: "100wh",
+    height: "100vh",
+    latitude: 38.500000,
+    longitude: -98.000000,
+    zoom: 3.8,
   });
 
   return (
     <div className='map-container'>
       <ReactMapGL
         {...viewport}
+        mapStyle="mapbox://styles/arol15/cke0uazub09t019ryp4uo156y"
         mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       />
