@@ -89,6 +89,7 @@ function Map() {
               >
                 <div>
                   <h3>{point.title}</h3>
+
                 </div>
               </Popup>
             ) : null}
