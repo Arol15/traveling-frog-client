@@ -25,7 +25,7 @@ const List = () => {
         })();
     }, [])
 
-    // console.log(pointsofinterest)
+    
 
     return (
         <div className="list-container">

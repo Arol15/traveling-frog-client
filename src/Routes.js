@@ -6,6 +6,7 @@ import Signup from './Pages/Signup/Signup';
 import NotFound from './Pages/NotFound/NotFound'; 
 import Home from './Pages/Home';
 import DetailsView from './Pages/DetailsView/DetailsVIew'
+import PointOfInterestView from './Pages/PointOfInterestView/PointOfInterestView'
 
 const authGuard = (Component) => () => {
     return JSON.parse(localStorage.getItem("data")).access_token ? (
@@ -32,6 +33,9 @@ const Routes = (props) => {
                 </Route>
                 <Route path='/types'>
                     <DetailsView />
+                </Route>
+                <Route path='/pointofinterest'>
+                    <PointOfInterestView />
                 </Route>
                 <Route path='*'> 
                     <NotFound />

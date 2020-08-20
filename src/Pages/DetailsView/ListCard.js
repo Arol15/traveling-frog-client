@@ -1,10 +1,16 @@
 import React from 'react';
+import {useHistory} from 'react-router-dom';
 import './ListCard.css'
 
 const ListCard = ({point}) => {
-    console.log(point)
+    // console.log(point)
+    let history = useHistory()
+    const redirectToForm = () => {
+        history.push(`/pointofinterest/${point.id}`)
+      }
+
     return (
-        <div className='listcard-container'> 
+        <div onClick={redirectToForm} className='listcard-container'> 
             <div>
                 {point.title}
             </div>

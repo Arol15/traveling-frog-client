@@ -16,16 +16,18 @@ function Map() {
   const locations = useLocation();
   const typeid = locations.state.id;
   const [pointsofinterest, setPointsofinterest] = useState([]);
+  const [visited, setVisited] = useState([])
   const [showPopup, setShowPop] = useState({});
 
   const getPointsofinterest = async () => {
-    // const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
+    const allpoints = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
+    const allpointsdata = await allpoints.json();
     const email = JSON.parse(localStorage.getItem("data")).user.email
-    console.log(email)
+    // console.log(email)
     const res = await fetch(`${config.baseUrl}/users/visits/${email}/${typeid}`);
     const data = await res.json();
     // console.log(data)
-    return data;
+    return [data, allpointsdata];
   };
   // getPointsofinterest()
   useEffect(() => {
@@ -33,10 +35,12 @@ function Map() {
       const data = await getPointsofinterest();
       //   console.log(data)
     //   setPointsofinterest(data.pointsofinterest);
-      setPointsofinterest(data.visits);
+      setVisited(data[0].visits);
+      console.log(data[1])
+      setPointsofinterest(data[1].pointsofinterest)
     })();
   }, []);
-  console.log(pointsofinterest);
+console.log(visited);
   return (
     <div className="map-container">
       <ReactMapGL
@@ -46,9 +50,8 @@ function Map() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
         {pointsofinterest.map((point) => (
-    
           <>
-            <Marker key={point.id} latitude={point.pointsofinterest.lat} longitude={point.pointsofinterest.lng}>
+            <Marker key={point.id} latitude={point.lat} longitude={point.lng}>
               <div
                 onClick={() =>
                   setShowPop({
@@ -84,15 +87,15 @@ function Map() {
             </Marker>
             {showPopup[point.id] ? (
               <Popup
-                latitude={point.pointsofinterest.lat}
-                longitude={point.pointsofinterest.lng}
+                latitude={point.lat}
+                longitude={point.lng}
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => this.setState({ showPopup: false })}
                 anchor="top"
               >
                 <div>
-                  <h3>{point.pointsofinterest.title}</h3>
+                  <h3>{point.title}</h3>
                   <div>
                       <img src={point.images} alt='pic' />
                   </div>
@@ -100,7 +103,7 @@ function Map() {
                       Visited: {point.start_date_visited} {point?.end_date_visited}
                   </div>
                   <div>
-                      Rating: {point.rating}
+                      <p>Rating: {point.rating}</p> 
                   </div>
                 
                 </div>
