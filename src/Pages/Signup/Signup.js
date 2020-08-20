@@ -24,7 +24,7 @@ const Signup = () => {
   const onSubmit = (data, e) => {
     // debugger;
     //   const data = formInfo
-    console.log(data);
+    // console.log(data);
     setMessage({
       data: "Registration is in progress...",
       type: "alert-warning",

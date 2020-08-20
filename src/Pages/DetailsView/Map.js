@@ -19,9 +19,12 @@ function Map() {
   const [showPopup, setShowPop] = useState({});
 
   const getPointsofinterest = async () => {
-    const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
+    // const res = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
+    const email = JSON.parse(localStorage.getItem("data")).user.email
+    console.log(email)
+    const res = await fetch(`${config.baseUrl}/users/visits/${email}/${typeid}`);
     const data = await res.json();
-    //   console.log(data)
+    // console.log(data)
     return data;
   };
   // getPointsofinterest()
@@ -29,11 +32,11 @@ function Map() {
     (async () => {
       const data = await getPointsofinterest();
       //   console.log(data)
-      setPointsofinterest(data.pointsofinterest);
+    //   setPointsofinterest(data.pointsofinterest);
+      setPointsofinterest(data.visits);
     })();
   }, []);
   console.log(pointsofinterest);
-
   return (
     <div className="map-container">
       <ReactMapGL
@@ -43,8 +46,9 @@ function Map() {
         onViewportChange={(nextViewport) => setViewport(nextViewport)}
       >
         {pointsofinterest.map((point) => (
+    
           <>
-            <Marker key={point.id} latitude={point.lat} longitude={point.lng}>
+            <Marker key={point.id} latitude={point.pointsofinterest.lat} longitude={point.pointsofinterest.lng}>
               <div
                 onClick={() =>
                   setShowPop({
@@ -80,16 +84,25 @@ function Map() {
             </Marker>
             {showPopup[point.id] ? (
               <Popup
-                latitude={point.lat}
-                longitude={point.lng}
+                latitude={point.pointsofinterest.lat}
+                longitude={point.pointsofinterest.lng}
                 closeButton={true}
                 closeOnClick={false}
                 onClose={() => this.setState({ showPopup: false })}
                 anchor="top"
               >
                 <div>
-                  <h3>{point.title}</h3>
-
+                  <h3>{point.pointsofinterest.title}</h3>
+                  <div>
+                      <img src={point.images} alt='pic' />
+                  </div>
+                  <div>
+                      Visited: {point.start_date_visited} {point?.end_date_visited}
+                  </div>
+                  <div>
+                      Rating: {point.rating}
+                  </div>
+                
                 </div>
               </Popup>
             ) : null}
