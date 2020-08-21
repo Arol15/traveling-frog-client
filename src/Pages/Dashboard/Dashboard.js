@@ -55,7 +55,7 @@ const Dashboard = () => {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <a className="nav-link cursor-pointer" href="/myprofile">
-                My Profile <span className="sr-only">(current)</span>
+                Dashboard <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
@@ -67,7 +67,9 @@ const Dashboard = () => {
               </a>
             </li>
           </ul>
-          <span className="navbar-text">Welcome, {dashboard?.user?.first_name}!</span>
+          <a className="nav-link cursor-pointer" href="/editprofile">
+            <span className="navbar-text">Welcome, {dashboard?.user?.first_name}!</span>
+          </a>
         </div>
       </nav>
       <div className="px-3">

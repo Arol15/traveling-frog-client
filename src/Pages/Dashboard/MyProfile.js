@@ -1,15 +1,14 @@
-import React from 'react'; 
-import Dashboard from './Dashboard';
+import React from "react";
+import Dashboard from "./Dashboard";
 
 const MyProfile = () => {
-    return (
-        <div>
-            <Dashboard />
-            <div className='editprofile-container'>
-                
-            </div>
-        </div>
-    )
-}
 
-export default MyProfile
+  return (
+    <div>
+      <Dashboard />
+        Here more info about trips
+    </div>
+  );
+};
+
+export default MyProfile;

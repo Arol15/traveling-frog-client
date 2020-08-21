@@ -5,7 +5,8 @@ import {
   Switch,
   Redirect,
 } from "react-router-dom";
-import MyProfile from './Pages/Dashboard/MyProfile';
+import MyProfile from "./Pages/Dashboard/MyProfile";
+import EditProfile from "./Pages/Dashboard/EditProfile";
 import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/NotFound/NotFound";
@@ -38,8 +39,8 @@ const Routes = (props) => {
         <Route path="/signup">
           <Signup />
         </Route>
-        <Route path="/myprofile" render={authGuard(MyProfile)}>
-                </Route>
+        <Route path="/myprofile" render={authGuard(MyProfile)}></Route>
+        <Route path="/editprofile" render={authGuard(EditProfile)}></Route>
         <Route exact path="/" render={authGuard(Home)}></Route>
         <Route path="/types">
           <DetailsView />
