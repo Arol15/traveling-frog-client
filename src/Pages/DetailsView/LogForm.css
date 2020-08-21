@@ -1,0 +1,9 @@
+.logform label, .logform input{
+    margin-right: 0.5rem; 
+    display: block; 
+    width: 100%;
+}
+
+.logform button {
+    margin: 10px; 
+}
