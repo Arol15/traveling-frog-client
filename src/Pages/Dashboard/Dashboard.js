@@ -10,7 +10,7 @@ const Dashboard = () => {
 
   const logout = () => {
     /* eslint-disable */
-    const toLogout = confirm("Are you sure to logout ?");
+    const toLogout = confirm("Are you sure to logout?");
     /* eslint-enable */
     if (toLogout) {
       localStorage.clear();
@@ -54,8 +54,8 @@ const Dashboard = () => {
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
-              <a className="nav-link cursor-pointer" href="/dashboard">
-                Dashboard <span className="sr-only">(current)</span>
+              <a className="nav-link cursor-pointer" href="/myprofile">
+                My Profile <span className="sr-only">(current)</span>
               </a>
             </li>
             <li className="nav-item">
@@ -67,7 +67,7 @@ const Dashboard = () => {
               </a>
             </li>
           </ul>
-          <span className="navbar-text">Welcome! {dashboard?.user?.first_name}</span>
+          <span className="navbar-text">Welcome, {dashboard?.user?.first_name}!</span>
         </div>
       </nav>
       <div className="px-3">

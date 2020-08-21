@@ -100,7 +100,7 @@ function Map() {
                   stroke-width="2"
                   stroke-linecap="round"
                   stroke-linejoin="round"
-                  class="feather feather-map-pin"
+                  // class="feather feather-map-pin"
                 >
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                   <circle cx="12" cy="10" r="3"></circle>
@@ -145,7 +145,7 @@ function Map() {
                 >
                   <div>
                     <h3>{point.title}</h3>
-                    <LogForm />
+                    <LogForm getPointsofinterest={getPointsofinterest} setPointsofinterest={setPointsofinterest} setShowPop={setShowPop} point={point.id}/>
                   </div>
                 </Popup>
               ) : null)}
