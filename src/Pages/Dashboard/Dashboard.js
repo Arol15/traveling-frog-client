@@ -68,7 +68,8 @@ const Dashboard = () => {
             </li>
           </ul>
           <a className="nav-link cursor-pointer" href="/editprofile">
-            <span className="navbar-text">Welcome, {dashboard?.user?.first_name}!</span>
+            <span className="navbar-text">{dashboard?.user?.first_name}
+            <img style={{width: "40px", height: "40px", borderRadius: 50}}src={dashboard?.user?.image} alt='pic'/></span>
           </a>
         </div>
       </nav>

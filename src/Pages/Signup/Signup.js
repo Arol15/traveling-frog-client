@@ -9,18 +9,7 @@ const Signup = () => {
   const { register, handleSubmit, errors } = useForm();
   const [message, setMessage] = useState();
   const history = useHistory();
-//   const [formInfo, setFormInfo] = useState({
-//     first_name: "",
-//     last_name: "",
-//     email: "",
-//     password: "",
-//   });
 
-//   const onChange = (e) => {
-//     e.preventDefault();
-//     const field = e.target.name;
-//     setFormInfo({ ...formInfo, ...{ [field]: e.target.value } });
-//   };
   const onSubmit = (data, e) => {
     // debugger;
     //   const data = formInfo
@@ -48,10 +37,10 @@ const Signup = () => {
           // !error &&
           setTimeout(() => {
             // console.log(data)
-          localStorage.setItem("data", JSON.stringify(data));
+          // localStorage.setItem("data", JSON.stringify(data));
 
           // console.log(data)
-          history.push("/");
+            history.push("/login");
         }, 2000);
 
       !error && e.target.reset();

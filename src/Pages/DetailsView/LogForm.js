@@ -30,13 +30,14 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="logform">
-        <label htmlFor="images">images</label>
+        <label htmlFor="images">Images: </label>
         <input name="images" type="file" ref={register} />
-        <label htmlFor="visitDate">Visit Date</label>
+        <label htmlFor="visitDate">Visit Date: </label>
         <input name="visitDate" type="date" required ref={register} />
-        <label htmlFor="rating">Rating</label>
+        <label htmlFor="rating">Rating: </label>
         <input
           name="rating"
+          type="number"
           placeholder="Enter from 1 to 10"
           //   required
           ref={register({
