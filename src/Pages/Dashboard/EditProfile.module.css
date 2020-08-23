@@ -1,17 +1,17 @@
 .container {
     height: 100vh;
   }
-  
-  .registrationFormContainer {
+
+.editProfileFormContainer {
     width: 24rem;
-  }
-  
-  .registrationFormLegend {
+}
+
+.editProfileFormLegend {
     width: 14rem;
     background: lightseagreen;
   }
 
-  .errorMessage {
+.errorMessage {
     font-size: 12px;
     letter-spacing: 0.05rem;
     padding-left: 0.25rem;

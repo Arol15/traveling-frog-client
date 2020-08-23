@@ -40,17 +40,17 @@ const Dashboard = () => {
         <a className="navbar-brand" href="/">
           Traveling Frog
         </a>
-        <button
+        {/* <button
           className="navbar-toggler"
           type="button"
-          data-toggle="collapse"
+          // data-toggle="collapse"
           data-target="#navbarText"
           aria-controls="navbarText"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
+          // aria-expanded="false"
+          // aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
@@ -66,17 +66,15 @@ const Dashboard = () => {
                 Logout
               </a>
             </li>
+            <li className="nav-item">
+              <a className="nav-link cursor-pointer" href="/editprofile">
+                <span className="navbar-text">{dashboard?.user?.first_name}
+                <img style={{width: "40px", height: "40px", borderRadius: 50}}src={dashboard?.user?.image} alt='pic'/></span>
+              </a>
+            </li>
           </ul>
-          <a className="nav-link cursor-pointer" href="/editprofile">
-            <span className="navbar-text">{dashboard?.user?.first_name}
-            <img style={{width: "40px", height: "40px", borderRadius: 50}}src={dashboard?.user?.image} alt='pic'/></span>
-          </a>
         </div>
       </nav>
-      <div className="px-3">
-        {/* <h1>{dashboard?.user?.last_name}</h1>
-        <p>{dashboard?.content}</p> */}
-      </div>
     </div>
   );
 };

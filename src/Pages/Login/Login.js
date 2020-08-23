@@ -11,13 +11,24 @@ const Login = () => {
   const { register, handleSubmit, errors } = useForm();
   const [message, setMessage] = useState();
   const history = useHistory();
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("")
 
-  const onSubmit = (data, e) => {
+  const onSubmit = (data) => {
     setMessage({
       data: "Login is in progress...",
       type: "alert-warning",
     });
-    console.log(data)
+    // console.log(data)
+    // if (demoUser) {
+    //   data = {
+    //     email: "test@test.com",
+    //     password: "123456"
+    //   }
+    // } else {
+    //   setEmail(data.email)
+    //   setPassword(data.password)
+    // }
     fetch(`${config.baseUrl}/session/login`, {
       method: "POST",
       headers: {
@@ -27,8 +38,8 @@ const Login = () => {
     })
       .then((res) => res.json())
       .then(({ error, data }) => {
-    //   .then((data) => {
-          console.log(data)
+        //   .then((data) => {
+        console.log(data);
         setMessage({
           data: error || "Logged in successfully, redirecting...",
           type: error ? "alert-danger" : "alert-success",
@@ -36,16 +47,21 @@ const Login = () => {
 
         !error &&
           setTimeout(() => {
-              console.log(data)
+            // console.log(data)
             localStorage.setItem("data", JSON.stringify(data));
-
-            console.log(data)
+            // console.log(data)
             history.push("/");
           }, 2000);
 
-        !error && e.target.reset();
+        // !error && e.target.reset();
       });
   };
+
+  // const loginDemoUser = (event) => {
+  //   event.preventDefault();
+  //   console.log("loging in the demo user");
+  //   onSubmit(event, true);
+  // };
 
   return (
     <div
@@ -127,12 +143,14 @@ const Login = () => {
               <button type="submit" className="btn btn-outline-primary">
                 Login
               </button>
-
               <button className="btn btn-link ml-auto">
                 <Link to="/signup">New User</Link>
               </button>
             </div>
           </form>
+          {/* <button onClick={loginDemoUser} className="btn btn-outline-primary" id="demoUser">
+                Demo
+              </button> */}
         </fieldset>
       </div>
     </div>

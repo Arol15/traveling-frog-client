@@ -10,6 +10,27 @@ const Signup = () => {
   const [message, setMessage] = useState();
   const history = useHistory();
 
+  // const onClick = (e, demoUser = false) => {
+  //   e.preventDefault();
+  //   let body;
+  //   if (demoUser) {
+  //     body = {
+  //       email: "test@test.com",
+  //       password: "123456",
+  //     };
+  //   // } else {
+  //   //   body = {
+  //   //     email: emailState,
+  //   //     password: passwordState,
+  //     };
+  //   }
+
+  // const loginDemoUser = (event) => {
+  //   event.preventDefault();
+  //   console.log("loging in the demo user");
+  //   onClick(event, true);
+  // };
+
   const onSubmit = (data, e) => {
     // debugger;
     //   const data = formInfo
@@ -90,8 +111,8 @@ const Signup = () => {
                     message: "Please enter your first name",
                   },
                   minLength: {
-                    value: 6,
-                    message: "Minimum 6 characters are allowed",
+                    value: 1,
+                    message: "Minimum 1 characters are allowed",
                   },
                   maxLength: {
                     value: 255,
@@ -121,8 +142,8 @@ const Signup = () => {
                     message: "Please enter your last name",
                   },
                   minLength: {
-                    value: 6,
-                    message: "Minimum 6 characters are allowed",
+                    value: 1,
+                    message: "Minimum 1 characters are allowed",
                   },
                   maxLength: {
                     value: 255,
