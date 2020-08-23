@@ -68,9 +68,11 @@ const Dashboard = () => {
             </li>
             <li className="nav-item">
               <a className="nav-link cursor-pointer" href="/editprofile">
-                <span className="navbar-text">{dashboard?.user?.first_name}
-                <img style={{width: "40px", height: "40px", borderRadius: 50}}src={dashboard?.user?.image} alt='pic'/></span>
+                <span className="navbar-text">{dashboard?.user?.first_name}</span>
               </a>
+              <a className="nav-link cursor-pointer">
+                <img onClick={() => console.log("hello")} style={{width: "40px", height: "40px", borderRadius: 50}}src={dashboard?.user?.image} alt='pic'/>
+              </a>    
             </li>
           </ul>
         </div>

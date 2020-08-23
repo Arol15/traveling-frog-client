@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 import config from "../../config";
 
 const Login = () => {
-  const { register, handleSubmit, errors } = useForm();
+  const { register, handleSubmit, errors, setValue } = useForm();
   const [message, setMessage] = useState();
   const history = useHistory();
   // const [email, setEmail] = useState("");
@@ -148,9 +148,17 @@ const Login = () => {
               </button>
             </div>
           </form>
-          {/* <button onClick={loginDemoUser} className="btn btn-outline-primary" id="demoUser">
+          <form  onSubmit={handleSubmit(onSubmit)}>
+            <div className={styles.demoform}>
+              <button onClick={() => {
+                  setValue("email", "test@gmail.com")
+                  setValue("password", 123456)
+                  }} 
+                  className="btn btn-outline-info">
                 Demo
-              </button> */}
+              </button>
+            </div>
+          </form>
         </fieldset>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 import config from "../../config";
 import styles from "./EditProfile.module.css";
+// import ProfilePicForm from "./ProfilePicForm";
 
 const EditProfile = () => {
   const storedUser = JSON.parse(localStorage.getItem("data")).user;
@@ -20,7 +21,7 @@ const EditProfile = () => {
   const [message, setMessage] = useState();
   const [inputValue, setInputValue] = useState("");
 
-  console.log(storedUser);
+  // console.log(storedUser);
 
   const onSubmit = (data, e) => {
     setMessage({
@@ -28,7 +29,7 @@ const EditProfile = () => {
       type: "alert-warning",
     });
     fetch(`${config.baseUrl}/users/${storedUser.email}`, {
-      method: "PUT",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
@@ -66,6 +67,7 @@ const EditProfile = () => {
       className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}
     >
       <div className={styles.editProfileFormContainer}>
+       <h3>Edit your profile</h3>
         {message && (
           <div
             className={`alert fade show d-flex ${message.type}`}
@@ -81,120 +83,129 @@ const EditProfile = () => {
             </span>
           </div>
         )}
-
-        <fieldset className="border p-3 rounded">
-          <legend
-            className={`${styles.editProfileFornLegend} border rounded p-1 text-center`}
-          >
-            Edit your profile
-          </legend>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
-            <div className="form-group">
-              <label htmlFor="first_name">First Name</label>
-              <input
-                onChange={(e) => setInputValue(e.target.value)}
-                id="inputForFirstName"
-                name="first_name"
-                type="text"
-                className="form-control"
-                ref={register({
-                  required: {
-                    value: true,
-                    message: "Please re-enter your first name",
-                  },
-                  minLength: {
-                    value: 1,
-                    message: "Minimum 1 characters are allowed",
-                  },
-                  maxLength: {
-                    value: 255,
-                    message: "Maximum 255 characters are allowed",
-                  },
-                })}
-                placeholder={user.first_name}
-              ></input>
-              {errors.first_name && (
-                <span className={`${styles.errorMessage} mandatory`}>
-                  {errors.first_name.message}
-                </span>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="last_name">Last Name</label>
-              <input
-                onChange={(e) => setInputValue(e.target.value)}
-                id="inputForLastName"
-                name="last_name"
-                type="text"
-                className="form-control"
-                ref={register({
-                  required: {
-                    value: true,
-                    message: "Please re-enter your last name",
-                  },
-                  minLength: {
-                    value: 1,
-                    message: "Minimum 1 characters are allowed",
-                  },
-                  maxLength: {
-                    value: 255,
-                    message: "Maximum 255 characters are allowed",
-                  },
-                })}
-                placeholder={user.last_name}
-              ></input>
-              {errors.last_name && (
-                <span className={`${styles.errorMessage} mandatory`}>
-                  {errors.last_name.message}
-                </span>
-              )}
-            </div>
-            <div className="form-group">
-              <label htmlFor="email">Email</label>
-              <input
-                id="inputForEmail"
-                name="email"
-                type="email"
-                className="form-control"
-                aria-describedby="Enter email address"
-                onChange={(e) => setInputValue(e.target.value)}
-                name="email"
-                ref={register({
-                  required: {
-                    value: true,
-                    message: "Please re-enter your email address",
-                  },
-                  pattern: {
-                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                    message: "Enter a valid email address",
-                  },
-                  minLength: {
-                    value: 6,
-                    message: "Minimum 6 characters are allowed",
-                  },
-                  maxLength: {
-                    value: 255,
-                    message: "Maximum 255 characters are allowed",
-                  },
-                })}
-                placeholder={user.email}
-              />
-              {errors.email && (
-                <span className={`${styles.errorMessage} mandatory`}>
-                  {errors.email.message}
-                </span>
-              )}
-            </div>
-            <div className="d-flex align-items-center justify-content-center">
-              <button type="submit" className="btn btn-outline-primary">
-                Save Changes
-              </button>
-              <button className="btn btn-link">
-                <Link to="/">Cancel</Link>
-              </button>
-            </div>
-          </form>
-        </fieldset>
+        <div className={styles.bothforms}>
+          <fieldset>
+            {/* <legend
+              className={`${styles.editProfileFormLegend} border rounded p-1 text-center`}
+            >
+              Edit your profile
+            </legend> */}
+            <form
+              onSubmit={handleSubmit(onSubmit)}
+              noValidate
+              autoComplete="off"
+            >
+              <div className="form-group">
+                <label htmlFor="first_name">First Name</label>
+                <input
+                  onChange={(e) => setInputValue(e.target.value)}
+                  id="inputForFirstName"
+                  name="first_name"
+                  type="text"
+                  className="form-control"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Please re-enter your first name",
+                    },
+                    minLength: {
+                      value: 1,
+                      message: "Minimum 1 characters are allowed",
+                    },
+                    maxLength: {
+                      value: 255,
+                      message: "Maximum 255 characters are allowed",
+                    },
+                  })}
+                  placeholder={user.first_name}
+                ></input>
+                {errors.first_name && (
+                  <span className={`${styles.errorMessage} mandatory`}>
+                    {errors.first_name.message}
+                  </span>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="last_name">Last Name</label>
+                <input
+                  onChange={(e) => setInputValue(e.target.value)}
+                  id="inputForLastName"
+                  name="last_name"
+                  type="text"
+                  className="form-control"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Please re-enter your last name",
+                    },
+                    minLength: {
+                      value: 1,
+                      message: "Minimum 1 characters are allowed",
+                    },
+                    maxLength: {
+                      value: 255,
+                      message: "Maximum 255 characters are allowed",
+                    },
+                  })}
+                  placeholder={user.last_name}
+                ></input>
+                {errors.last_name && (
+                  <span className={`${styles.errorMessage} mandatory`}>
+                    {errors.last_name.message}
+                  </span>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="inputForEmail"
+                  name="email"
+                  type="email"
+                  className="form-control"
+                  aria-describedby="Enter email address"
+                  value={user.email}
+                  // onChange={(e) => setInputValue(e.target.value)}
+                  name="email"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Please re-enter your email address",
+                    },
+                    pattern: {
+                      value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                      message: "Enter a valid email address",
+                    },
+                    minLength: {
+                      value: 6,
+                      message: "Minimum 6 characters are allowed",
+                    },
+                    maxLength: {
+                      value: 255,
+                      message: "Maximum 255 characters are allowed",
+                    },
+                  })}
+                  placeholder={user.email}
+                />
+                {errors.email && (
+                  <span className={`${styles.errorMessage} mandatory`}>
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
+              <div className="d-flex align-items-center justify-content-center">
+                <button type="submit" className="btn btn-outline-primary">
+                  Save Changes
+                </button>
+                <button className="btn btn-link">
+                  <Link to="/">Cancel</Link>
+                </button>
+              </div>
+            </form>
+          </fieldset>
+          {/* <fieldset>
+            <ProfilePicForm />
+          </fieldset> */}
+        </div>
       </div>
     </div>
   );

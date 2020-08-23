@@ -8,11 +8,16 @@
   
   .loginFormLegend {
     width: 14rem;
-    background: #dee2e6;
+    background:lightseagreen;
   }
   
   .errorMessage {
     font-size: 12px;
     letter-spacing: 0.05rem;
     padding-left: 0.25rem;
+  }
+
+  .demoform {
+    display: flex; 
+    justify-content: center;
   }
