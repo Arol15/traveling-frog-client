@@ -4,6 +4,8 @@ import config from "../../config";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
 import LogForm from "./LogForm";
 import "./Map.css";
+// import Rating from './Rating'
+import { FaStar } from "react-icons/fa";
 
 function Map() {
   const [viewport, setViewport] = useState({
@@ -74,38 +76,39 @@ function Map() {
                   src="https://i.imgur.com/y0G5YTX.png"
                   alt="marker"
                 /> */}
-                {point.visited ? 
-                (<svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="green"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="feather feather-map-pin"
-                >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>)
-                : ((<svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="red"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  // class="feather feather-map-pin"
-                >
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                  <circle cx="12" cy="10" r="3"></circle>
-                </svg>))
-                }
+                {point.visited ? (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="green"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-map-pin"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                ) : (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="red"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    // class="feather feather-map-pin"
+                  >
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                    <circle cx="12" cy="10" r="3"></circle>
+                  </svg>
+                )}
               </div>
             </Marker>
             {(point.visited && showPopup[point.id] ? (
@@ -124,11 +127,20 @@ function Map() {
                     <img src={point.images} alt="pic" />
                   </div>
                   <div>
-                    Visited on:
+                    Visited on:{" "}
                     {new Date(point.start_date_visited).toLocaleDateString()}
                   </div>
                   <div>
-                    <p>Rating: {point.rating}</p>
+                    <p>
+                      Rating:{" "}
+                      {[...Array(point.rating)].map((star, i) => (
+                        <FaStar
+                          key={i}
+                          selected={point.rating}
+                          color="#ffc107"
+                        />
+                      ))}<span>({point.rating} of 5 stars)</span>
+                    </p>
                   </div>
                 </div>
               </Popup>
@@ -145,7 +157,12 @@ function Map() {
                 >
                   <div>
                     <h3>{point.title}</h3>
-                    <LogForm getPointsofinterest={getPointsofinterest} setPointsofinterest={setPointsofinterest} setShowPop={setShowPop} point={point.id}/>
+                    <LogForm
+                      getPointsofinterest={getPointsofinterest}
+                      setPointsofinterest={setPointsofinterest}
+                      setShowPop={setShowPop}
+                      point={point.id}
+                    />
                   </div>
                 </Popup>
               ) : null)}

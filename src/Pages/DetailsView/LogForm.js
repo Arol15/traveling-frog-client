@@ -2,12 +2,15 @@ import React, {useState} from "react";
 import { useForm } from "react-hook-form";
 import "./LogForm.css";
 import config from "../../config";
+// import Rating from './Rating'
+// import StarRatingComponent from 'react-star-rating-component';
 
 const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }) => {
   //   console.log(point)
   const { register, handleSubmit } = useForm();
   const email = JSON.parse(localStorage.getItem("data")).user.email;
   const [loading, setLoading] = useState(false)
+  // const [rating, setRating] = useState(null)
 //   console.log(email);
   const onSubmit = (data, e) => {
     // console.log(data)
@@ -27,6 +30,10 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
     }, 2000)
   };
 
+  // const onStarClick =(rating, name) => {
+  //   setRating();
+  // }
+
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="logform">
@@ -38,8 +45,7 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
         <input
           name="rating"
           type="number"
-          placeholder="Enter from 1 to 10"
-          //   required
+          placeholder="Enter from 1 to 5"
           ref={register({
             required: {
               value: true,

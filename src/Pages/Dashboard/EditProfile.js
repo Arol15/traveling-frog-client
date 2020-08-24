@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { useHistory, Link } from "react-router-dom";
 import config from "../../config";
 import styles from "./EditProfile.module.css";
-// import ProfilePicForm from "./ProfilePicForm";
+import ProfilePicForm from "./ProfilePicForm";
 
 const EditProfile = () => {
   const storedUser = JSON.parse(localStorage.getItem("data")).user;
@@ -202,9 +202,9 @@ const EditProfile = () => {
               </div>
             </form>
           </fieldset>
-          {/* <fieldset>
+          <fieldset>
             <ProfilePicForm />
-          </fieldset> */}
+          </fieldset>
         </div>
       </div>
     </div>

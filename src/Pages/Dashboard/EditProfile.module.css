@@ -3,7 +3,7 @@
   }
 
 .editProfileFormContainer {
-    width: 24rem;
+    width: 48rem;
 }
 
 .editProfileFormLegend {
@@ -17,7 +17,7 @@
     padding-left: 0.25rem;
   }
 
-  /* .bothforms {
+  .bothforms {
       display: flex; 
 
-  } */
+  }
