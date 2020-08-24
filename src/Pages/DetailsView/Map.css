@@ -6,5 +6,9 @@
     /* height: 24px; 
     width: 24px;  */
     transform: translate(-50%, -100%);
+}
 
+h3 {
+    text-align: center; 
+    padding: 10px;
 }

@@ -1,9 +1,30 @@
-.logform label, .logform input{
-    margin-right: 0.5rem; 
-    display: block; 
-    width: 100%;
-}
+/* .logform {
+    display: flex;
+    flex-direction: column;
+    /* padding: 10px; */
+
 
 .logform button {
     margin: 10px; 
+}
+
+input[type="radio"] {
+    width: 1px;
+    display: none; 
+}
+
+.star {
+    cursor: pointer; 
+    transition: color 200ms;   
+}
+
+.stars-container {
+    display: flex;  
+    justify-content: center;
+    align-items: center;
+}
+
+.rating-container {
+    display: flex; 
+    align-items: center;
 }

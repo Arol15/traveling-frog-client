@@ -13,7 +13,7 @@ function Map() {
     height: "100vh",
     latitude: 38.5,
     longitude: -98.0,
-    zoom: 3.8,
+    zoom: 3.6,
   });
 
   const locations = useLocation();
