@@ -1,12 +1,13 @@
 .card-container {
     border: 1px solid red; 
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 300px;
     margin: 20px; 
 }
 .card-container-img img{
     background-image: cover;
-    /* width: 200px;  */
-    height: 150px;
-    object-fit: contain;
+    border: 3px solid yellow; 
+    width: 250px;  
+    /* height: 70vh; */
+    /* object-fit: contain; */
 }

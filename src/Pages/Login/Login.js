@@ -44,7 +44,7 @@ const Login = () => {
           data: error || "Logged in successfully, redirecting...",
           type: error ? "alert-danger" : "alert-success",
         });
-
+  
         !error &&
           setTimeout(() => {
             // console.log(data)
@@ -64,102 +64,107 @@ const Login = () => {
   // };
 
   return (
-    <div
-      className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}
-    >
-      <div className={styles.loginFormContainer}>
-        {message && (
-          <div
-            className={`alert fade show d-flex ${message.type}`}
-            role="alert"
-          >
-            {message.data}
-            <span
-              aria-hidden="true"
-              className="ml-auto cursor-pointer"
-              onClick={() => setMessage(null)}
+    <div className="splash-containercontainer-fluid d-flex align-items-center justify-content-center">
+      <div className={`${styles.container} `}>
+        <img src="https://i.pinimg.com/originals/65/e6/03/65e603f0669a1561546af42a97634ed0.jpg" alt="frog"></img>
+      </div>
+      <div
+        className={`${styles.container} `}
+      >
+        <div className={styles.loginFormContainer}>
+          {message && (
+            <div
+              className={`alert fade show d-flex ${message.type}`}
+              role="alert"
             >
-              &times;
-            </span>
-          </div>
-        )}
-        <fieldset className="border p-3 rounded">
-          <legend
-            className={`${styles.loginFormLegend} border rounded p-1 text-center`}
-          >
-            Login Form
-          </legend>
-          <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
-            <div className="form-group">
-              <label htmlFor="inputForEmail">Email address</label>
-              <span className="mandatory">*</span>
-              <input
-                id="inputForEmail"
-                name="email"
-                type="email"
-                className="form-control"
-                aria-describedby="Enter email address"
-                placeholder="Enter email address"
-                ref={register({
-                  required: {
-                    value: true,
-                    message: "Please enter your email address",
-                  },
-                })}
-              />
-              {/**
-               * we provide validation configuration for email field above
-               * error message are displayed with code below
-               */}
-              {errors.email && (
-                <span className={`${styles.errorMessage} mandatory`}>
-                  {errors.email.message}
-                </span>
-              )}
+              {message.data}
+              <span
+                aria-hidden="true"
+                className="ml-auto cursor-pointer"
+                onClick={() => setMessage(null)}
+              >
+                &times;
+              </span>
             </div>
-            <div className="form-group">
-              <label htmlFor="inputForPassword">Password</label>
-              <span className="mandatory">*</span>
-              <input
-                type="password"
-                name="password"
-                className="form-control"
-                id="inputForPassword"
-                placeholder="Enter password"
-                ref={register({
-                  required: {
-                    value: true,
-                    message: "Please enter password",
-                  },
-                })}
-              />
-              {errors.password && (
-                <span className={`${styles.errorMessage} mandatory`}>
-                  {errors.password.message}
-                </span>
-              )}
-            </div>
-            <div className="d-flex align-items-center">
-              <button type="submit" className="btn btn-outline-primary">
-                Login
-              </button>
-              <button className="btn btn-link ml-auto">
-                <Link to="/signup">New User</Link>
-              </button>
-            </div>
-          </form>
-          <form  onSubmit={handleSubmit(onSubmit)}>
-            <div className={styles.demoform}>
-              <button onClick={() => {
-                  setValue("email", "test@gmail.com")
-                  setValue("password", 123456)
-                  }} 
-                  className="btn btn-outline-info">
-                Demo
-              </button>
-            </div>
-          </form>
-        </fieldset>
+          )}
+          <fieldset className="border p-3 rounded">
+            <legend
+              className={`${styles.loginFormLegend} border rounded p-1 text-center`}
+            >
+              Login Form
+            </legend>
+            <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
+              <div className="form-group">
+                <label htmlFor="inputForEmail">Email address</label>
+                <span className="mandatory">*</span>
+                <input
+                  id="inputForEmail"
+                  name="email"
+                  type="email"
+                  className="form-control"
+                  aria-describedby="Enter email address"
+                  placeholder="Enter email address"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Please enter your email address",
+                    },
+                  })}
+                />
+                {/**
+                 * we provide validation configuration for email field above
+                 * error message are displayed with code below
+                 */}
+                {errors.email && (
+                  <span className={`${styles.errorMessage} mandatory`}>
+                    {errors.email.message}
+                  </span>
+                )}
+              </div>
+              <div className="form-group">
+                <label htmlFor="inputForPassword">Password</label>
+                <span className="mandatory">*</span>
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control"
+                  id="inputForPassword"
+                  placeholder="Enter password"
+                  ref={register({
+                    required: {
+                      value: true,
+                      message: "Please enter password",
+                    },
+                  })}
+                />
+                {errors.password && (
+                  <span className={`${styles.errorMessage} mandatory`}>
+                    {errors.password.message}
+                  </span>
+                )}
+              </div>
+              <div className="d-flex align-items-center">
+                <button type="submit" className="btn btn-outline-primary">
+                  Login
+                </button>
+                <button className="btn btn-link ml-auto">
+                  <Link to="/signup">New User</Link>
+                </button>
+              </div>
+            </form>
+            <form  onSubmit={handleSubmit(onSubmit)}>
+              <div className={styles.demoform}>
+                <button onClick={() => {
+                    setValue("email", "test@gmail.com")
+                    setValue("password", 123456)
+                    }} 
+                    className="btn btn-outline-info">
+                  Demo
+                </button>
+              </div>
+            </form>
+          </fieldset>
+        </div>
       </div>
     </div>
   );

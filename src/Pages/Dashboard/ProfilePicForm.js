@@ -1,35 +1,61 @@
-import React, {useState, useEffect} from "react";
-// import { useForm } from "react-hook-form";
-import config from '../../config'
+import React, { useState, useEffect } from "react";
+// import { useHistory } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import config from "../../config";
 
-const ProfilePicForm = () => {
-//   const { register, handleSubmit } = useForm();
-  const [image, setImage] =useState("")
-  
+const ProfilePicForm = ({ email }) => {
+  const { register, handleSubmit, reset } = useForm();
+  const [image, setImage] = useState();
+
   useEffect(() => {
-    const email = JSON.parse(localStorage.getItem("data")).user.email
+    const email = JSON.parse(localStorage.getItem("data")).user.email;
     fetch(`${config.baseUrl}/users/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        // "auth-token": JSON.parse(localStorage.getItem("data")).access_token
       },
     })
       .then((res) => res.json())
       .then(({ error, data }) => {
-        console.log(data)
-        setImage(data);
+        // console.log(data)
+        setImage(data.user.image);
       });
   }, []);
+
+  const onSubmit = (data, e) => {
+    const formData = new FormData();
+    const file = document.querySelector('input[name="image"]');
+    formData.append("image", file.files[0]);
+    fetch(`${config.baseUrl}/users/image/${email}`, {
+      method: "POST",
+      body: formData,
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => {
+        setImage(data.user.image);
+      });
+    setTimeout(() => {
+      // alert("Updated!")
+      e.target.reset()
+    }, 1000)
+  };
 
   return (
     <div>
       <div>
-        <img src={image?.user?.image} alt="pic" />
+        <img src={image} alt="pic" />
       </div>
-      <form>
-       <input type="file" name="file"></input>
-       <input type="submmit"></input>
+      <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+        <input
+          id="profile-image"
+          type="file"
+          name="image"
+          accept="image/jpeg"
+          ref={register}
+        ></input>
+        <button type="submit">Save</button>
       </form>
     </div>
   );

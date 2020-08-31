@@ -28,12 +28,14 @@ const EditProfile = () => {
       data: "Update is in progress...",
       type: "alert-warning",
     });
+    let body = data 
+    body.email = storedUser.email
     fetch(`${config.baseUrl}/users/${storedUser.email}`, {
-      method: "POST",
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(body),
     })
       .then((res) => {
         return res.json();
@@ -46,15 +48,21 @@ const EditProfile = () => {
         setTimeout(() => {
           // console.log(data.first_name);
           const alldata = JSON.parse(localStorage.getItem("data"));
-          alldata.user = data;
+          console.log(data)
+          console.log(alldata)
+          // console.log(user.image)
+          Object.assign(alldata.user, data)
+          // data.image = user.image
+          // alldata.user = data;
+          console.log(alldata)
           localStorage.setItem("data", JSON.stringify(alldata));
           console.log(data);
-          setUser({
-            first_name: data.first_name,
-            last_name: data.last_name,
-            email: data.email,
-            image: data.image,
-          });
+          // setUser({
+          //   first_name: alldata.first_name,
+          //   last_name: alldata.last_name,
+          //   email: alldata.email,
+          //   image: alldata.image,
+          // });
           history.push("/");
         }, 2000);
         // alert("Updated!");
@@ -117,7 +125,7 @@ const EditProfile = () => {
                       message: "Maximum 255 characters are allowed",
                     },
                   })}
-                  placeholder={user.first_name}
+                  defaultValue={user.first_name}
                 ></input>
                 {errors.first_name && (
                   <span className={`${styles.errorMessage} mandatory`}>
@@ -147,7 +155,7 @@ const EditProfile = () => {
                       message: "Maximum 255 characters are allowed",
                     },
                   })}
-                  placeholder={user.last_name}
+                  defaultValue={user.last_name}
                 ></input>
                 {errors.last_name && (
                   <span className={`${styles.errorMessage} mandatory`}>
@@ -155,7 +163,7 @@ const EditProfile = () => {
                   </span>
                 )}
               </div>
-              <div className="form-group">
+              {/* <div className="form-group">
                 <label htmlFor="email">Email</label>
                 <input
                   id="inputForEmail"
@@ -191,7 +199,7 @@ const EditProfile = () => {
                     {errors.email.message}
                   </span>
                 )}
-              </div>
+              </div> */}
               <div className="d-flex align-items-center justify-content-center">
                 <button type="submit" className="btn btn-outline-primary">
                   Save Changes
@@ -203,7 +211,10 @@ const EditProfile = () => {
             </form>
           </fieldset>
           <fieldset>
-            <ProfilePicForm />
+            {/* <div>
+              <img src={user.image} alt="pic" />
+            </div> */}
+            <ProfilePicForm email={user.email} oldPic={user.image}/>
           </fieldset>
         </div>
       </div>

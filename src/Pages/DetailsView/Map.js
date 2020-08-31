@@ -40,7 +40,7 @@ function Map() {
   useEffect(() => {
     (async () => {
       const data = await getPointsofinterest();
-      //   console.log(data)
+      console.log(data);
       //   setPointsofinterest(data.pointsofinterest);
       // setVisited(data[0].visits);
       // console.log(data[1])
@@ -87,7 +87,7 @@ function Map() {
                     stroke-width="2"
                     stroke-linecap="round"
                     stroke-linejoin="round"
-                    class="feather feather-map-pin"
+                    // class="feather feather-map-pin"
                   >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -124,7 +124,11 @@ function Map() {
                 <div>
                   <h3>{point.title}</h3>
                   <div>
-                    <img src={point.images} alt="pic" />
+                    <img
+                      src={point.image}
+                      style={{ width: 300, height: 300 }}
+                      alt="pic"
+                    />
                   </div>
                   <div>
                     Visited on:{" "}
@@ -139,7 +143,8 @@ function Map() {
                           selected={point.rating}
                           color="#ffc107"
                         />
-                      ))}<span>({point.rating} of 5 stars)</span>
+                      ))}
+                      <span>({point.rating} of 5 stars)</span>
                     </p>
                   </div>
                 </div>
