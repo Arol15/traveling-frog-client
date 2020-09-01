@@ -1,12 +1,44 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+import { makeStyles } from "@material-ui/core/styles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
+import IconButton from "@material-ui/core/IconButton";
+import Button from '@material-ui/core/Button';
+import EditIcon from "@material-ui/icons/Edit";
+import DashboardIcon from '@material-ui/icons/Dashboard';
+import HomeIcon from '@material-ui/icons/Home';
+import Avatar from '@material-ui/core/Avatar';
+
+// import MoreIcon from "@material-ui/icons/AccountCircle";
+// import MenuItem from "@material-ui/core/MenuItem";
+// import Menu from "@material-ui/core/Menu";
 
 import config from "../../config";
 // import './Dashboard.css'
 
+const useStyles = makeStyles((theme) => ({
+  title: {
+    flexGrow: 1,
+    display: 'flex'
+  },
+}));
+
 const Dashboard = () => {
+  const classes = useStyles();
   const [dashboard, setDashboard] = useState(null);
   const history = useHistory();
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const logout = () => {
     /* eslint-disable */
@@ -19,12 +51,12 @@ const Dashboard = () => {
   };
 
   useEffect(() => {
-    const email = JSON.parse(localStorage.getItem("data")).user.email
+    const email = JSON.parse(localStorage.getItem("data")).user.email;
     fetch(`${config.baseUrl}/users/${email}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "auth-token": JSON.parse(localStorage.getItem("data")).access_token
+        "auth-token": JSON.parse(localStorage.getItem("data")).access_token,
       },
     })
       .then((res) => res.json())
@@ -33,52 +65,68 @@ const Dashboard = () => {
         setDashboard(data);
       });
   }, []);
-// debugger
+
   return (
-    <div className="dashboard-container">
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <a className="navbar-brand" href="/">
-          Traveling Frog
-        </a>
-        {/* <button
-          className="navbar-toggler"
-          type="button"
-          // data-toggle="collapse"
-          data-target="#navbarText"
-          aria-controls="navbarText"
-          // aria-expanded="false"
-          // aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button> */}
-        <div className="collapse navbar-collapse" id="navbarText">
-          <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <a className="nav-link cursor-pointer" href="/myprofile">
-                Dashboard <span className="sr-only">(current)</span>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href='/'
-                className="nav-link cursor-pointer"
-                onClick={() => logout()}
-              >
-                Logout
-              </a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link cursor-pointer" href="/editprofile">
-                <span className="navbar-text">{dashboard?.user?.first_name}</span>
-              </a>
-              <a className="nav-link cursor-pointer">
-                <img onClick={() => console.log("hello")} style={{width: "40px", height: "40px", borderRadius: 50}} src={dashboard?.user?.image} alt='pic'/>
-              </a>    
-            </li>
-          </ul>
+    <AppBar position="static">
+      <Toolbar>
+        <section className={classes.leftToolBar}>
+        <IconButton onClick={() => history.push("/")} color="inherit" aria-label="Dashboard">
+            <HomeIcon />
+          </IconButton>
+        </section>
+        <Typography variant="h6" className={classes.title}>
+          Traveling Frog 
+        </Typography>
+        <div className={classes.root}>
+          <Avatar alt="profile-pic" src={dashboard?.user?.image}/>
         </div>
-      </nav>
-    </div>
+        <section className={classes.rightToolbar}>
+          <IconButton onClick={() => history.push('/myprofile')} color="inherit" aria-label="Dashboard">
+            <DashboardIcon />
+          </IconButton>
+          <IconButton onClick={() => history.push("/editprofile")} color="inherit" aria-label="Edit">
+            <EditIcon />
+          </IconButton>
+          <Button onClick={logout} color="inherit">Logout</Button>
+        </section>
+      </Toolbar>
+    </AppBar>
   );
+
+  // return (
+  //   <div className="dashboard-container">
+  //     <nav className="navbar navbar-expand-lg navbar-light bg-light">
+  //       <a className="navbar-brand" href="/">
+  //         Traveling Frog
+  //       </a>
+  //       <div className="collapse navbar-collapse" id="navbarText">
+  //         <ul className="navbar-nav mr-auto">
+  //           <li className="nav-item active">
+  //             <a className="nav-link cursor-pointer" href="/myprofile">
+  //               Dashboard <span className="sr-only">(current)</span>
+  //             </a>
+  //           </li>
+  //           <li className="nav-item">
+  //             <a href='/'
+  //               className="nav-link cursor-pointer"
+  //               onClick={() => logout()}
+  //             >
+  //               Logout
+  //             </a>
+  //           </li>
+  //           <li className="nav-item">
+  //             <a className="nav-link cursor-pointer" href="/editprofile">
+  //               <span className="navbar-text">{dashboard?.user?.first_name}</span>
+  //             </a>
+  //             <a className="nav-link cursor-pointer">
+  //               <img onClick={() => console.log("hello")} style={{width: "40px", height: "40px", borderRadius: 50}} src={dashboard?.user?.image} alt='pic'/>
+  //             </a>
+  //           </li>
+  //         </ul>
+  //       </div>
+  //     </nav>
+  //   </div>
+  // );
 };
 
 export default Dashboard;
