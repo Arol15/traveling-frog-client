@@ -50,7 +50,7 @@ const ListItems = () => {
                 const labelId = `checkbox-list-secondary-label-${point.id}`; 
                 return (
                     <>
-                        <ListItem key={point.id} button>
+                        <ListItem key={point.id} >
                             <ListItemAvatar>
                                 <Avatar className={classes.avatar}> {point.id}
                                 </Avatar>

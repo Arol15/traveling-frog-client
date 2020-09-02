@@ -1,14 +1,17 @@
-.map-container {
+/* .map-container {
     width: 80%; 
-}
-
-.marker {
-    /* height: 24px; 
-    width: 24px;  */
-    transform: translate(-50%, -100%);
-}
+} */
 
 h3 {
     text-align: center; 
     padding: 10px;
+}
+
+.marker {
+    transform: translate(-50%, -100%);
+}
+
+.popup {
+    position: absolute; 
+    z-index: 2;
 }

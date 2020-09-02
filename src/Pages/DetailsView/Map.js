@@ -32,7 +32,7 @@ function Map() {
       `${config.baseUrl}/pointsofinterest/${typeid}/${email}`
     );
     const data = await res.json();
-    // console.log(data.pointsofinterest)
+    console.log(data.pointsofinterest)
     // return [data, allpointsdata];
     return data;
   };
@@ -41,7 +41,7 @@ function Map() {
     (async () => {
       const data = await getPointsofinterest();
       console.log(data);
-      //   setPointsofinterest(data.pointsofinterest);
+      // setPointsofinterest(data.pointsofinterest);
       // setVisited(data[0].visits);
       // console.log(data[1])
       // setPointsofinterest(data[1].pointsofinterest)
@@ -67,43 +67,32 @@ function Map() {
                   })
                 }
               >
-                {/* <img
-                  className="marker"
-                  style={{
-                    height: `${6 * viewport.zoom}px`,
-                    width: `${6 * viewport.zoom}px`,
-                  }}
-                  src="https://i.imgur.com/y0G5YTX.png"
-                  alt="marker"
-                /> */}
                 {point.visited ? (
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="green"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    // class="feather feather-map-pin"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className='marker'
                   >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
                   </svg>
                 ) : (
                   <svg
-                    xmlns="http://www.w3.org/2000/svg"
                     width="32"
                     height="32"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="red"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    // class="feather feather-map-pin"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className='marker'
                   >
                     <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
                     <circle cx="12" cy="10" r="3"></circle>
@@ -120,6 +109,7 @@ function Map() {
                 dynamicPosition={true}
                 onClose={() => setShowPop({})}
                 anchor="top"
+                className='popup'
               >
                 <div>
                   <h3>{point.title}</h3>
@@ -159,14 +149,16 @@ function Map() {
                   dynamicPosition={true}
                   onClose={() => setShowPop({})}
                   anchor="top"
+                  className='popup'
                 >
                   <div>
                     <h3>{point.title}</h3>
                     <LogForm
                       getPointsofinterest={getPointsofinterest}
                       setPointsofinterest={setPointsofinterest}
+                      pointsofinterest={pointsofinterest}
                       setShowPop={setShowPop}
-                      point={point.id}
+                      point={point}
                     />
                   </div>
                 </Popup>

@@ -5,7 +5,7 @@ import config from "../../config";
 import { FaStar } from "react-icons/fa";
 // import StarRatingComponent from 'react-star-rating-component';
 
-const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }) => {
+const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest, getPointsofinterest }) => {
   //   console.log(point)
   const { register, handleSubmit } = useForm();
   const email = JSON.parse(localStorage.getItem("data")).user.email;
@@ -20,16 +20,18 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
     const file = document.querySelector('input[name="image"]')
     const visitDate = document.querySelector('input[name="visitDate"]')
     const rating = document.querySelector('input[name="rating"]')
-    const point = document.querySelector('input[name="point"]')
+    const pointField = document.querySelector('input[name="point"]')
     const email = document.querySelector('input[name="email"]')
     formData.append('image', file.files[0])
-    // console.log(file.files[0])
+    console.log(file.files[0])
     formData.append('visitDate', visitDate.value)
-    // console.log(visitDate.value)
+    console.log(visitDate.value)
     formData.append('rating', rating.value)
-    // console.log(rating.ratingValue)
-    formData.append('point', point.value)
+    console.log(rating.value)
+    formData.append('point', pointField.value)
+    console.log(pointField.value)
     formData.append('email', email.value)
+    console.log(email.value)
     fetch(`${config.baseUrl}/visits/entry`, {
       method: "POST",
       // headers: {
@@ -38,14 +40,24 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
       // body: JSON.stringify(data),
       body: formData, 
     })
-    setTimeout(async() => {
-        const data = await getPointsofinterest()
-        // console.log(data)
-        setShowPop({})
-        setPointsofinterest(data.pointsofinterest)
-        // console.log(data.pointsofinterest)
-        alert("Visit added!")
-    }, 2000)
+    // setTimeout(async() => {
+    // const res = await getPointsofinterest()
+    // console.log(res)
+    setShowPop({})
+    const updatedpointsofinterest = [...pointsofinterest]
+    console.log(updatedpointsofinterest)
+    // console.log(point.title)
+    // console.log(point)
+    let visitedpoint = updatedpointsofinterest.find((p) => {
+  
+      return p.title === point.title
+    })
+    visitedpoint.visited = true 
+    setPointsofinterest(updatedpointsofinterest)
+    //setPointsofinterest(res.pointsofinterest)
+    // console.log(data.pointsofinterest)
+    alert("Visit added!")
+    // }, 2000)
   };
 
   return (
@@ -85,7 +97,7 @@ const LogForm = ({ point, setShowPop, setPointsofinterest, getPointsofinterest }
             })}
           </div>
         </div>
-        <input name="point" value={point} type="hidden"></input>
+        <input name="point" value={point.id} type="hidden"></input>
         <input name="email" value={email} type="hidden"></input>
         <button className="btn btn-outline-secondary" disabled={loading}>{loading ? "Loading" : "Submit"}</button>
       </form>
