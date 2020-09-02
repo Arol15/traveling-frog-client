@@ -12,7 +12,7 @@ import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/NotFound/NotFound";
 import Home from "./Pages/Home";
 import DetailsView from "./Pages/DetailsView/DetailsVIew";
-// import PointOfInterestView from './Pages/PointOfInterestView/PointOfInterestView'
+
 
 const authGuard = (Component) => () => {
   return JSON.parse(localStorage.getItem("data"))?.access_token ? (
@@ -21,13 +21,6 @@ const authGuard = (Component) => () => {
     <Redirect to="/login" />
   );
 };
-// const authGuard = (Component) => () => {
-//     return (JSON.parse(localStorage.getItem("data")).access_token) ? (
-//         <Redirect to="/login" />
-//     ) : (
-//      <Component />
-//     );
-//   };
 
 const Routes = (props) => {
   return (

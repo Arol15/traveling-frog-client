@@ -1,11 +1,30 @@
 import React, { useState, useEffect} from 'react';
 import { useLocation } from 'react-router-dom'
 import config from '../../config'
-import ListCard from './ListCard'
-import './List.css'
+// import ListCard from './ListCard'
+// import './List.css'
+import { makeStyles } from '@material-ui/core/styles';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
+import ListItemText from '@material-ui/core/ListItemText';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import Divider from '@material-ui/core/Divider';
+import Avatar from '@material-ui/core/Avatar';
 
-const List = () => {
-  
+const useStyles = makeStyles((theme) => ({
+    root: {
+      width: '100%',
+      maxWidth: 360,
+      backgroundColor: theme.palette.background.paper,
+    },
+    avatar:  {
+        backgroundColor: "#00b0ff",
+    }
+  }));
+
+const ListItems = () => {
+    const classes = useStyles();
     const locations = useLocation();
     const typeid = locations.state.id; 
     const [pointsofinterest, setPointsofinterest] = useState([])
@@ -25,15 +44,26 @@ const List = () => {
         })();
     }, [])
 
-    
-
     return (
-        <div className="list-container">
-            {pointsofinterest.map((point) => (
-                <ListCard key={point.id} point={point}/>
-            ))}
-        </div>
+        <List dense className={classes.root}>
+            {pointsofinterest.map((point) => {
+                const labelId = `checkbox-list-secondary-label-${point.id}`; 
+                return (
+                    <>
+                        <ListItem key={point.id} button>
+                            <ListItemAvatar>
+                                <Avatar className={classes.avatar}> {point.id}
+                                </Avatar>
+                            </ListItemAvatar>
+                            <ListItemText id={labelId} primary={point.title} />
+                        </ListItem>
+                        <Divider variant="inset" component="li" />
+                    </> 
+                );             
+            })}
+        </List>
     )
 }
 
-export default List; 
+export default ListItems; 
+//  <ListCard key={point.id} point={point}/>

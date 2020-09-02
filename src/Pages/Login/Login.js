@@ -19,16 +19,6 @@ const Login = () => {
       data: "Login is in progress...",
       type: "alert-warning",
     });
-    // console.log(data)
-    // if (demoUser) {
-    //   data = {
-    //     email: "test@test.com",
-    //     password: "123456"
-    //   }
-    // } else {
-    //   setEmail(data.email)
-    //   setPassword(data.password)
-    // }
     fetch(`${config.baseUrl}/session/login`, {
       method: "POST",
       headers: {
@@ -65,9 +55,6 @@ const Login = () => {
 
   return (
     <div className="splash-containercontainer-fluid d-flex align-items-center justify-content-center">
-      <div className={`${styles.container} `}>
-        <img src="https://i.pinimg.com/originals/65/e6/03/65e603f0669a1561546af42a97634ed0.jpg" alt="frog"></img>
-      </div>
       <div
         className={`${styles.container} `}
       >

@@ -1,6 +1,6 @@
 import React from "react";
 import Dashboard from "../Dashboard/Dashboard";
-import List from "./List";
+import ListItems from "./List";
 import Map from "./Map";
 import "./DetailsView.css";
 
@@ -11,7 +11,7 @@ const DetailsView = () => {
         <Dashboard />
       </div>
       <div className="details-body">
-        <List />
+        <ListItems />
         <Map />
       </div>
     </div>

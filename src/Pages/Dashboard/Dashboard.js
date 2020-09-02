@@ -10,35 +10,24 @@ import EditIcon from "@material-ui/icons/Edit";
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
-
-// import MoreIcon from "@material-ui/icons/AccountCircle";
-// import MenuItem from "@material-ui/core/MenuItem";
-// import Menu from "@material-ui/core/Menu";
-
 import config from "../../config";
 // import './Dashboard.css'
 
 const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
-    display: 'flex'
+    display: 'flex', 
+    color: 'black'
   },
+  appBar: {
+    backgroundColor: "#fff"
+  }
 }));
 
 const Dashboard = () => {
   const classes = useStyles();
   const [dashboard, setDashboard] = useState(null);
   const history = useHistory();
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const open = Boolean(anchorEl);
-
-  const handleMenu = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
 
   const logout = () => {
     /* eslint-disable */
@@ -67,10 +56,10 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <AppBar position="static">
+    <AppBar className={classes.appBar} position="static">
       <Toolbar>
         <section className={classes.leftToolBar}>
-        <IconButton onClick={() => history.push("/")} color="inherit" aria-label="Dashboard">
+        <IconButton onClick={() => history.push("/")} aria-label="Dashboard">
             <HomeIcon />
           </IconButton>
         </section>
@@ -81,13 +70,13 @@ const Dashboard = () => {
           <Avatar alt="profile-pic" src={dashboard?.user?.image}/>
         </div>
         <section className={classes.rightToolbar}>
-          <IconButton onClick={() => history.push('/myprofile')} color="inherit" aria-label="Dashboard">
+          <IconButton onClick={() => history.push('/myprofile')} aria-label="Dashboard">
             <DashboardIcon />
           </IconButton>
-          <IconButton onClick={() => history.push("/editprofile")} color="inherit" aria-label="Edit">
+          <IconButton onClick={() => history.push("/editprofile")} aria-label="Edit">
             <EditIcon />
           </IconButton>
-          <Button onClick={logout} color="inherit">Logout</Button>
+          <Button onClick={logout}>Logout</Button>
         </section>
       </Toolbar>
     </AppBar>
