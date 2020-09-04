@@ -17,10 +17,14 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     display: 'flex', 
-    color: 'black'
+    color: 'green'
   },
   appBar: {
     backgroundColor: "#fff"
+  }, 
+  tfAvatar: {
+    backgroundColor: "green", 
+    fontWeight: 900
   }
 }));
 
@@ -60,10 +64,10 @@ const Dashboard = () => {
       <Toolbar>
         <section className={classes.leftToolBar}>
         <IconButton onClick={() => history.push("/")} aria-label="Dashboard">
-            <HomeIcon />
+            <Avatar className={classes.tfAvatar}>TF</Avatar>
           </IconButton>
         </section>
-        <Typography variant="h6" className={classes.title}>
+        <Typography variant="h6" gutterButtom className={classes.title}>
           Traveling Frog 
         </Typography>
         <div className={classes.root}>

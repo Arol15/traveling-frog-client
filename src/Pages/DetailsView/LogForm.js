@@ -5,9 +5,9 @@ import config from "../../config";
 import { FaStar } from "react-icons/fa";
 // import StarRatingComponent from 'react-star-rating-component';
 
-const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest, getPointsofinterest }) => {
+const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) => {
   //   console.log(point)
-  const { register, handleSubmit } = useForm();
+  const { handleSubmit } = useForm();
   const email = JSON.parse(localStorage.getItem("data")).user.email;
   const [loading, setLoading] = useState(false)
   const [rating, setRating] = useState(null);
@@ -23,15 +23,15 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest, get
     const pointField = document.querySelector('input[name="point"]')
     const email = document.querySelector('input[name="email"]')
     formData.append('image', file.files[0])
-    console.log(file.files[0])
+    // console.log(file.files[0])
     formData.append('visitDate', visitDate.value)
-    console.log(visitDate.value)
+    // console.log(visitDate.value)
     formData.append('rating', rating.value)
-    console.log(rating.value)
+    // console.log(rating.value)
     formData.append('point', pointField.value)
-    console.log(pointField.value)
+    // console.log(pointField.value)
     formData.append('email', email.value)
-    console.log(email.value)
+    // console.log(email.value)
     fetch(`${config.baseUrl}/visits/entry`, {
       method: "POST",
       // headers: {

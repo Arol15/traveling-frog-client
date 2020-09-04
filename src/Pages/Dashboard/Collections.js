@@ -10,11 +10,10 @@ const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
-  // paper: {
-  //   paddingTop: 20,
-  //   height: 140,
-  //   width: 100,
-  // },
+  collectionsContainer: {
+    // marginTop: theme.spacing(2),
+    // marginBottom: theme.spacing(12),
+  },
 }));
 
 const Collections = () => {
@@ -37,9 +36,9 @@ const Collections = () => {
 
   return (
     
-        <Grid container spacing={4} alignItems="">
+        <Grid container spacing={4} className={classes.collectionsContainer}>
             {collections.map((collection) => (
-              <Grid item xs={4}>
+              <Grid item xs={4}> 
                 <CollectionCard className={classes.paper} key={collection.id} collection={collection} />
               </Grid>
             ))}

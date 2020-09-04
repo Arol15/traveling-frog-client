@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useLocation } from "react-router-dom";
 import config from "../../config";
 import ReactMapGL, { Marker, Popup } from "react-map-gl";
@@ -6,6 +6,7 @@ import LogForm from "./LogForm";
 import "./Map.css";
 // import Rating from './Rating'
 import { FaStar } from "react-icons/fa";
+import { DetailsViewsContext } from '../../context/DetailsViewsContext'
 
 function Map() {
   const [viewport, setViewport] = useState({
@@ -18,10 +19,10 @@ function Map() {
 
   const locations = useLocation();
   const typeid = locations.state.id;
-  const [pointsofinterest, setPointsofinterest] = useState([]);
+ 
   // const [visited, setVisited] = useState([])
   const [showPopup, setShowPop] = useState({});
-
+  const { pointsofinterest, setPointsofinterest } = useContext(DetailsViewsContext)
   const getPointsofinterest = async () => {
     // const allpoints = await fetch(`${config.baseUrl}/pointsofinterest/${typeid}`);
     // const allpointsdata = await allpoints.json();
@@ -48,6 +49,7 @@ function Map() {
       setPointsofinterest(data.pointsofinterest);
     })();
   }, []);
+
   // console.log(visited);
   return (
     <div className="map-container">
