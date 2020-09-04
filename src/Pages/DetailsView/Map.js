@@ -11,7 +11,7 @@ import { DetailsViewsContext } from '../../context/DetailsViewsContext'
 function Map() {
   const [viewport, setViewport] = useState({
     width: "100wh",
-    height: "100vh",
+    height: "91vh",
     latitude: 38.5,
     longitude: -98.0,
     zoom: 3.6,
@@ -118,7 +118,7 @@ function Map() {
                   <div>
                     <img
                       src={point.image}
-                      style={{ width: 300, height: 300 }}
+                      style={{ width: 300 }}
                       alt="pic"
                     />
                   </div>

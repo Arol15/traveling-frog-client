@@ -10,26 +10,6 @@ const Signup = () => {
   const [message, setMessage] = useState();
   const history = useHistory();
 
-  // const onClick = (e, demoUser = false) => {
-  //   e.preventDefault();
-  //   let body;
-  //   if (demoUser) {
-  //     body = {
-  //       email: "test@test.com",
-  //       password: "123456",
-  //     };
-  //   // } else {
-  //   //   body = {
-  //   //     email: emailState,
-  //   //     password: passwordState,
-  //     };
-  //   }
-
-  // const loginDemoUser = (event) => {
-  //   event.preventDefault();
-  //   console.log("loging in the demo user");
-  //   onClick(event, true);
-  // };
 
   const onSubmit = (data, e) => {
     // debugger;
@@ -88,11 +68,11 @@ const Signup = () => {
           </div>
         )}
 
-        <fieldset className="border p-3 rounded">
+        <fieldset className="p-3 rounded">
           <legend
-            className={`${styles.registrationFormLegend} border rounded p-1 text-center`}
+            className={`${styles.registrationFormLegend} p-1 text-center`}
           >
-            Registration Form
+            Sign Up
           </legend>
           <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
             <div className="form-group">

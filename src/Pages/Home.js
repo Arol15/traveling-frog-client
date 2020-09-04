@@ -49,7 +49,7 @@ export default function Home() {
         <Typography variant="h3">
           Your Travel Collections
         </Typography>
-        <Typography variant="h4" gutterBottom className={classes.subTitle}>
+        <Typography variant="h5" gutterBottom className={classes.subTitle}>
           Where will you go next?
         </Typography>
       </Container>

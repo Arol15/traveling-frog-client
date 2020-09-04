@@ -12,7 +12,7 @@ import Signup from "./Pages/Signup/Signup";
 import NotFound from "./Pages/NotFound/NotFound";
 import Home from "./Pages/Home";
 import DetailsView from "./Pages/DetailsView/DetailsVIew";
-
+import Splash from "./Pages/Login/Splash"
 
 const authGuard = (Component) => () => {
   return JSON.parse(localStorage.getItem("data"))?.access_token ? (
@@ -27,7 +27,7 @@ const Routes = (props) => {
     <Router {...props}>
       <Switch>
         <Route path="/login">
-          <Login />
+          <Splash />
         </Route>
         <Route path="/signup">
           <Signup />

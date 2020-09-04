@@ -1,14 +1,20 @@
 .container {
     height: 100vh;
+    background: #1D976C; 
+    background: -webkit-linear-gradient(to right, #93F9B9, #1D976C);  
+    background: linear-gradient(to right, #93F9B9, #1D976C); 
   }
   
   .registrationFormContainer {
     width: 24rem;
+    background: white;
+    border-radius: 10px;
   }
   
   .registrationFormLegend {
     width: 14rem;
-    background: lightseagreen;
+    color: #1D976C;
+    /* background: lightseagreen; */
   }
 
   .errorMessage {

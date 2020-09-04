@@ -12,8 +12,11 @@ const useStyles = makeStyles({
       maxWidth: '100%',
     },
     media: {
-      height: 250,
+      height: 200,
     },
+    title: {
+      color: "#233044"
+    }
   });
 
 const CollectionCard = ({
@@ -37,7 +40,7 @@ const CollectionCard = ({
           title={type}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+          <Typography gutterBottom variant="h5" component="h2" className={classes.title}>
             {type}
           </Typography>
           {/* <Typography variant="body2" color="textSecondary" component="p">

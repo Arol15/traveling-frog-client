@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import "./LogForm.css";
 import config from "../../config";
 import { FaStar } from "react-icons/fa";
+
 // import StarRatingComponent from 'react-star-rating-component';
 
 const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) => {
@@ -23,7 +24,7 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) =>
     const pointField = document.querySelector('input[name="point"]')
     const email = document.querySelector('input[name="email"]')
     formData.append('image', file.files[0])
-    // console.log(file.files[0])
+    console.log(file.value)
     formData.append('visitDate', visitDate.value)
     // console.log(visitDate.value)
     formData.append('rating', rating.value)
@@ -40,6 +41,9 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) =>
       // body: JSON.stringify(data),
       body: formData, 
     })
+    const filename = file.value.match(/\w+\.\w+$/gm)
+    const s3path = `https://traveling-frog-app.s3.us-east-2.amazonaws.com/${filename}`
+
     // setTimeout(async() => {
     // const res = await getPointsofinterest()
     // console.log(res)
@@ -53,6 +57,10 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) =>
       return p.title === point.title
     })
     visitedpoint.visited = true 
+    visitedpoint.image = s3path
+    visitedpoint.rating = rating.value
+    visitedpoint.start_date_visited = visitDate.value
+
     setPointsofinterest(updatedpointsofinterest)
     //setPointsofinterest(res.pointsofinterest)
     // console.log(data.pointsofinterest)

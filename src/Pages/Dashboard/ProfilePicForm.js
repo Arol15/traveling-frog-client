@@ -37,7 +37,7 @@ const ProfilePicForm = ({ email }) => {
         setImage(data.user.image);
       });
     setTimeout(() => {
-      // alert("Updated!")
+      alert("Updated!")
       e.target.reset()
     }, 1000)
   };
@@ -45,7 +45,7 @@ const ProfilePicForm = ({ email }) => {
   return (
     <div>
       <div>
-        <img src={image} alt="pic" />
+        <img src={image} style={{"width": 200, "height": 200}}alt="pic" />
       </div>
       <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
         <input
@@ -55,7 +55,7 @@ const ProfilePicForm = ({ email }) => {
           accept="image/jpeg"
           ref={register}
         ></input>
-        <button type="submit">Save</button>
+        <button className="btn btn-outline-primary" type="submit">Save</button>
       </form>
     </div>
   );

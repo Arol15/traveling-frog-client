@@ -1,15 +1,26 @@
 .container {
-    margin-top: 200px;
-    height: 100vh;
+    /* margin-top: 200px; */
+    /* height: 100vh; */
+    /* border: 1px solid red; */
+    
   }
   
   .loginFormContainer {
     width: 24rem;
+    /* height: 24rem; */
+    background: white;
+    border-radius: 5px;
   }
+
+  /* .loginContainer {
+    padding-top: 25px;
+    margin-bottom: 35px;
+  } */
   
   .loginFormLegend {
-    width: 14rem;
-    background:lightseagreen;
+    margin-bottom: 2rem;
+    margin-top: 1rem;
+    color: #1D976C;
   }
   
   .errorMessage {
@@ -21,8 +32,6 @@
   .demoform {
     display: flex; 
     justify-content: center;
+    padding-bottom: 25px;
   }
 
-  /* .splash-container {
-    display: flex;
-  } */

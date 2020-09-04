@@ -47,14 +47,8 @@ const Login = () => {
       });
   };
 
-  // const loginDemoUser = (event) => {
-  //   event.preventDefault();
-  //   console.log("loging in the demo user");
-  //   onSubmit(event, true);
-  // };
-
   return (
-    <div className="splash-containercontainer-fluid d-flex align-items-center justify-content-center">
+    <div className={`${styles.splash} container-fluid d-flex align-items-center justify-content-center`}>
       <div
         className={`${styles.container} `}
       >
@@ -66,7 +60,7 @@ const Login = () => {
             >
               {message.data}
               <span
-                aria-hidden="true"
+                ariaHidden="true"
                 className="ml-auto cursor-pointer"
                 onClick={() => setMessage(null)}
               >
@@ -74,12 +68,12 @@ const Login = () => {
               </span>
             </div>
           )}
-          <fieldset className="border p-3 rounded">
-            <legend
-              className={`${styles.loginFormLegend} border rounded p-1 text-center`}
+          <fieldset className={`${styles.loginContainer} border p-3 rounded`}>
+            <h4
+              className={`${styles.loginFormLegend} p-1 text-center`}
             >
-              Login Form
-            </legend>
+              Log in into your account
+            </h4>
             <form onSubmit={handleSubmit(onSubmit)} noValidate autoComplete="off">
               <div className="form-group">
                 <label htmlFor="inputForEmail">Email address</label>
@@ -89,7 +83,7 @@ const Login = () => {
                   name="email"
                   type="email"
                   className="form-control"
-                  aria-describedby="Enter email address"
+                  ariaDescribedby="Enter email address"
                   placeholder="Enter email address"
                   ref={register({
                     required: {

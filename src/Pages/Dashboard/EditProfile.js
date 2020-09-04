@@ -74,8 +74,10 @@ const EditProfile = () => {
     <div
       className={`${styles.container} container-fluid d-flex align-items-center justify-content-center`}
     >
+      <div className='header'>
+        <h3>Edit your profile</h3>
+      </div> 
       <div className={styles.editProfileFormContainer}>
-       <h3>Edit your profile</h3>
         {message && (
           <div
             className={`alert fade show d-flex ${message.type}`}
@@ -102,6 +104,7 @@ const EditProfile = () => {
               onSubmit={handleSubmit(onSubmit)}
               noValidate
               autoComplete="off"
+              className="form-1"
             >
               <div className="form-group">
                 <label htmlFor="first_name">First Name</label>
@@ -210,7 +213,7 @@ const EditProfile = () => {
               </div>
             </form>
           </fieldset>
-          <fieldset>
+          <fieldset className="second-form">
             {/* <div>
               <img src={user.image} alt="pic" />
             </div> */}

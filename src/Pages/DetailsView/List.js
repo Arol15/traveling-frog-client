@@ -60,7 +60,7 @@ const ListItems = () => {
                     <>
                         <ListItem key={point.id} >
                             <ListItemAvatar>
-                                <Avatar className={classes.avatar}> {point.id}
+                                <Avatar className={classes.avatar}> {point.state}
                                 </Avatar>
                             </ListItemAvatar>
                             <ListItemText id={labelId} primary={point.title} />

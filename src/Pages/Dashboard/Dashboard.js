@@ -8,7 +8,6 @@ import IconButton from "@material-ui/core/IconButton";
 import Button from '@material-ui/core/Button';
 import EditIcon from "@material-ui/icons/Edit";
 import DashboardIcon from '@material-ui/icons/Dashboard';
-import HomeIcon from '@material-ui/icons/Home';
 import Avatar from '@material-ui/core/Avatar';
 import config from "../../config";
 // import './Dashboard.css'

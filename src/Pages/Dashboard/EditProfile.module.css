@@ -1,15 +1,23 @@
 .container {
     height: 100vh;
+    display: flex; 
+    flex-direction: column;
   }
 
 .editProfileFormContainer {
-    width: 48rem;
+    margin-top: 50px; 
+
 }
+
 
 .editProfileFormLegend {
     width: 14rem;
     background: lightseagreen;
   }
+
+ .form-1 {
+   margin: 30px; 
+ }
 
 .errorMessage {
     font-size: 12px;
@@ -20,4 +28,12 @@
   .bothforms {
       display: flex; 
 
+  }
+
+  .second-form {
+    padding: 30px; 
+  }
+
+  .form-group {
+    margin-left: 50px; 
   }

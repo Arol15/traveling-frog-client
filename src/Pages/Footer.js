@@ -30,7 +30,8 @@ const useStyles = makeStyles((theme) => ({
   },
   icons: {
     color: "white",
-    outline: "none"
+    outline: "none", 
+    border: 'none'
   },
   root: {
     display: "flex",
@@ -56,8 +57,8 @@ export default function Footer() {
             <Typography variant="body1">
               {"Lora Rusinouskaya © "} {new Date().getFullYear()}
             </Typography>
-            <IconButton >
-              <GitHubIcon onClick={() => window.open('https://github.com/Arol15', '_blank')} className={classes.icons} fontSize="sm" />
+            <IconButton className={classes.icons}>
+              <GitHubIcon onClick={() => window.open('https://github.com/Arol15', '_blank')}  fontSize="sm" />
             </IconButton>
             <IconButton>
               <LinkedInIcon onClick={() => window.open('https://www.linkedin.com/in/lorarusinouskaya/', '_blank')} className={classes.icons} fontSize="sm" />
