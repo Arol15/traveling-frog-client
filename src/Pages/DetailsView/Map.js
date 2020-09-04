@@ -50,7 +50,7 @@ function Map() {
     })();
   }, []);
 
-  // console.log(visited);
+  // console.log(pointsofinterest);
   return (
     <div className="map-container">
       <ReactMapGL

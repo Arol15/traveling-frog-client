@@ -49,7 +49,7 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) =>
     // console.log(res)
     setShowPop({})
     const updatedpointsofinterest = [...pointsofinterest]
-    console.log(updatedpointsofinterest)
+    // console.log(updatedpointsofinterest)
     // console.log(point.title)
     // console.log(point)
     let visitedpoint = updatedpointsofinterest.find((p) => {
@@ -58,7 +58,7 @@ const LogForm = ({ point, setShowPop, pointsofinterest, setPointsofinterest}) =>
     })
     visitedpoint.visited = true 
     visitedpoint.image = s3path
-    visitedpoint.rating = rating.value
+    visitedpoint.rating = parseInt(rating.value, 10)
     visitedpoint.start_date_visited = visitDate.value
 
     setPointsofinterest(updatedpointsofinterest)
