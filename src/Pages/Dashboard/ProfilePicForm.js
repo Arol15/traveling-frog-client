@@ -21,7 +21,7 @@ const ProfilePicForm = ({ email }) => {
         setImage(data.user.image);
       });
   }, []);
-
+//TODO: remove ALL alerst!!! 
   const onSubmit = (data, e) => {
     const formData = new FormData();
     const file = document.querySelector('input[name="image"]');
@@ -45,7 +45,7 @@ const ProfilePicForm = ({ email }) => {
   return (
     <div>
       <div>
-        <img src={image} style={{"width": 200, "height": 200}}alt="pic" />
+        <img src={image} style={{"height": 200}}alt="pic" />
       </div>
       <form encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
         <input
