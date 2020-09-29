@@ -15,7 +15,10 @@ import { DetailsViewsContext } from '../../context/DetailsViewsContext'
 const useStyles = makeStyles((theme) => ({
     root: {
       width: '100%',
-      maxWidth: 360,
+    //   maxWidth: 360,
+      overflow: "auto", 
+      maxHeight: '93vh',
+    //   height: 400, 
       backgroundColor: theme.palette.background.paper,
     },
     avatar:  {
@@ -53,7 +56,7 @@ const ListItems = () => {
     }, [setPointsofinterest, pointsofinterest])
 
     return (
-        <List dense className={classes.root}>
+        <List dense className={classes.root} >
             {pointsofinterest.map((point) => {
                 const labelId = `checkbox-list-secondary-label-${point.id}`; 
                 return (
