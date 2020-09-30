@@ -2,7 +2,7 @@
 
 is a travel log application allowing users to log their themed trips on a map
 
-(/images/travelingfrog.gif)
+![gif](public/images/travelingfrog.gif)
 
 
 [Live Link](https://travelingfrog.herokuapp.com/)
