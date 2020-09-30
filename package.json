@@ -22,10 +22,12 @@
     "react-map-gl": "^5.2.7",
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.3",
-    "react-star-rating-component": "^1.4.1"
+    "react-star-rating-component": "^1.4.1",
+    "serve": "^11.3.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "dev": "react-scripts start",
+    "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
